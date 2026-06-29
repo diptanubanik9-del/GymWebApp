@@ -65,7 +65,7 @@ def search():
         cursor.execute("select * from members where name = %s", (name,))
         results = cursor.fetchall()
         cursor.close()
-        db.close
+        db.close()
     return render_template("search.html", results=results)
 
 
