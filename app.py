@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 def get_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="water123",
-        database="gym_db"
+        host="sql12.freesqldatabase.com",
+        user="sql12831826",
+        password="MKjI6dpxxv",
+        database="sql12831826"
     )
 
 @app.route("/")
