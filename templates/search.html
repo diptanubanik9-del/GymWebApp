@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Member</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/members">Members</a> |
+        <a href="/add_member">Add Member</a> |
+        <a href="/search">Search</a> |
+        <a href="/about">About</a>
+    </nav>
+<div class="container">
+    <h1>Search Member</h1>
+
+    <form action="/search" method="POST">
+        <input type="text" name="name" placeholder="Enter member name">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Join Date</th>
+            </tr>
+            {% for member in results %}
+            <tr>
+                <td>{{ member[0] }}</td>
+                <td>{{ member[1] }}</td>
+                <td>{{ member[2] }}</td>
+                <td>{{ member[3] }}</td>
+                <td>{{ member[4] }}</td>
+                <td>{{ member[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>

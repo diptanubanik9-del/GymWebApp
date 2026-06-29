@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Member</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/members">Members</a> |
+        <a href="/about">About</a> |
+        <a href="/add_member">Add Member</a> |
+        <a href="/search">Search</a> |
+        
+    </nav>
+    <div class="container">
+    <h1>Add New Member</h1>
+
+    <form action="/add_member" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name"><br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age"><br><br>
+
+        <label>Gender:</label>
+        <input type="text" name="gender"><br><br>
+
+        <label>Phone:</label>
+        <input type="text" name="phone"><br><br>
+
+        <button type="submit">Add Member</button>
+    </form>
+    </div>
+</body>
+</html>
