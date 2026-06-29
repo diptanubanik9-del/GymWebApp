@@ -58,14 +58,14 @@ def delete_member(id):
 @app.route("/search", methods=["GET", "POST"])
 def search():
     results = []
-    if request.method =="POST":
+    if request.method == "POST":
         name = request.form["name"]
         db = get_db()
         cursor = db.cursor()
-        cursor.execute("select * from members where name = %s", (name,))
+        cursor.execute("SELECT * FROM Members WHERE name LIKE %s", (f"%{name}%",))
         results = cursor.fetchall()
         cursor.close()
-        db.close()
+        db.close()  # fixed!
     return render_template("search.html", results=results)
 
 
@@ -74,4 +74,4 @@ def about():
     return render_template("about.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
