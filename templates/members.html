@@ -5,13 +5,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/members">Members</a> |
-        <a href="/about">About</a> |
-        <a href="/add_member">Add Member</a> |
-        <a href="/search">Search</a> |
-    </nav>
+    {% include 'nav.html' %}
     <div class="container">
     <h1>Members</h1>
     <table>
@@ -22,7 +16,9 @@
             <th>Gender</th>
             <th>Phone</th>
             <th>Join Date</th>
+            {% if is_admin %}
             <th>Action</th>
+            {% endif %}
         </tr>
         {% for member in members %}
         <tr>
@@ -32,7 +28,9 @@
             <td>{{ member[3] }}</td>
             <td>{{ member[4] }}</td>
             <td>{{ member[5] }}</td>
+            {% if is_admin %}
             <td><a href="/delete_member/{{ member[0] }}">Delete</a></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>
