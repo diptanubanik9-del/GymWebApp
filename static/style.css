@@ -10,16 +10,36 @@ body {
 }
 
 nav {
-    background-color: #1a1a2e;
-    padding: 15px 30px;
+    background-color: #ffffff;
+    padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-brand span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a1a2e;
+}
+
+.nav-links {
     display: flex;
     gap: 20px;
 }
 
 nav a {
-    color: white;
+    color: #1a1a2e;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 nav a:hover {
@@ -66,3 +86,47 @@ input {
     padding: 10px;
     width: 300px;
     border: 1px solid #ddd;
+
+/* ---- Background: blackish-orange ---- */
+body {
+    background: linear-gradient(160deg, #120a05 0%, #2b1608 45%, #4a230c 100%);
+    color: #f4ede4; /* light text so it's readable on the dark bg */
+}
+
+/* ---- Glass nav ---- */
+nav {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* nav text needs to be light now, since the old dark navy text
+   won't be readable against this dark, semi-transparent nav */
+.nav-brand span,
+.nav-links a {
+    color: #f4ede4;
+}
+
+.nav-links a:hover {
+    color: var(--gold, #ffb703);
+}
+
+/* ---- Login button: stands out in yellow ---- */
+.btn-login {
+    background-color: #ffcc00;
+    color: #1a1200;      /* dark text for contrast on yellow */
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-login:hover {
+    color: #1a1200;       /* prevent it inheriting the generic hover color above */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.4);
+}

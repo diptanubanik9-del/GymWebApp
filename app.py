@@ -27,11 +27,12 @@ def inject_login():
         "logged_in": login_required(),
         "is_admin": admin_required(),
     }
-
+# Home paage part
 @app.route("/")
 def home():
     return render_template("home.html")
 
+#Members part
 @app.route("/members")
 def members():
     db = get_db()
@@ -42,6 +43,7 @@ def members():
     db.close()
     return render_template("members.html", members=members)
 
+#Adding_members part
 @app.route("/add_member", methods=["GET", "POST"])
 def add_member():
     if not admin_required():
@@ -64,6 +66,7 @@ def add_member():
 
     return render_template("add_member.html")
 
+#Deleting Members part
 @app.route("/delete_member/<id>")
 def delete_member(id):
     if not admin_required():
@@ -77,6 +80,7 @@ def delete_member(id):
     db.close()
     return redirect("/members")
 
+#Searching Members part
 @app.route("/search", methods=["GET", "POST"])
 def search():
     results = []
@@ -91,10 +95,27 @@ def search():
     return render_template("search.html", results=results)
 
 
+#About section
 @app.route("/about")
 def about():
     return render_template("about.html")
 
+#Services Section
+@app.route("/service")
+def service():
+    return render_template("service.html")
+
+#Pricing Section
+@app.route("/pricing")
+def pricing():
+    return render_template("pricing.html")
+
+#Contact Section
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+#Register section
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if login_required():
@@ -128,6 +149,7 @@ def register():
 
     return render_template("register.html")
 
+#Login section
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if login_required():
@@ -162,6 +184,7 @@ def login():
 
     return render_template("login.html")
 
+#logout section
 @app.route("/logout")
 def logout():
     session.pop("logged_in", None)
@@ -169,5 +192,6 @@ def logout():
     session.pop("is_admin", None)
     return redirect("/login")
 
+#Connection of port
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

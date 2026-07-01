@@ -1,15 +1,23 @@
 <nav>
-    <a href="/">Home</a> |
-    <a href="/members">Members</a> |
-    <a href="/about">About</a> |
-    {% if is_admin %}
-    <a href="/add_member">Add Member</a> |
-    {% endif %}
-    <a href="/search">Search</a> |
-    {% if logged_in %}
-    <a href="/logout">Logout</a>
-    {% else %}
-    <a href="/register">Register</a> |
-    <a href="/login">Login</a>
-    {% endif %}
+    <div class="nav-brand">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Transform 360 Club" height="50">
+        <span>Transform 360 Club</span>
+    </div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/members">Members</a>
+        {% if is_admin %}
+        <a href="/add_member">Add Member</a>
+        <a href="/search">Search</a>
+        {% endif %}
+        <a href="/about">About</a>
+        <a href="/service">Service</a>
+        <a href="/pricing">Prices</a>
+        <a href="/contact">Contact</a>
+        {% if logged_in %}
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/login" class="btn-login">Login</a>
+        {% endif %}
+    </div>
 </nav>
